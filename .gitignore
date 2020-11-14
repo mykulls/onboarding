@@ -18,6 +18,7 @@
 .env.test.local
 .env.production.local
 .prettierrc
+.env
 /.vscode/
 
 npm-debug.log*

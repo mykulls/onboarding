@@ -1,36 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function Post({ prepend }) {
-  const [output, setOutput] = useState('');
-  const [display, setDisplay] = useState(false);
-
-  useEffect(() => {
-    if (display) {
-      document.title = `You typed ${output}`;
-    }
-  }, [output, display]);
-
+export default function Post({ title, body, author }) {
   return (
     <>
-      <input
-        type="text"
-        value={output}
-        onChange={(e) => setOutput(e.target.value)}
-      />
-      <button
-        type="button"
-        onClick={() => {
-          setDisplay(true);
-        }}
-      >
-        Submit!
-      </button>
-      <div>{display ? prepend + output : prepend}</div>
+      <div>
+        <p>
+          Title:&nbsp;
+          {title}
+        </p>
+      </div>
+      <div>
+        <p>
+          Body:&nbsp;
+          {body}
+        </p>
+      </div>
+      <div>
+        <p>
+          Author:&nbsp;
+          {author}
+        </p>
+      </div>
     </>
   );
 }
 
 Post.propTypes = {
-  prepend: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
 };
